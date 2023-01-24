@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding {
+        enabled true
+    }
 }
 
 // Allow references to generated code
@@ -67,4 +71,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+
+    //Load image url
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

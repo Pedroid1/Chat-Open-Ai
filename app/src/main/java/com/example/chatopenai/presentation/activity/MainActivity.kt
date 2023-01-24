@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.chatopenai.R
+import com.example.chatopenai.common.loadImage
+import com.example.chatopenai.databinding.ActivityMainBinding
 import com.example.chatopenai.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,11 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
-
+    private lateinit var _binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
 
-        viewModel.teste()
+        viewModel.url.observe(this) {
+            if (it != null) _binding.img.loadImage(it)
+        }
     }
 }

@@ -1,8 +1,8 @@
 package com.example.chatopenai.data.repository
 
 import com.example.chatopenai.data.remote.OpenAiApi
-import com.example.chatopenai.domain.model.Completion
-import com.example.chatopenai.domain.model.CompletionRequest
+import com.example.chatopenai.data.remote.model.CompletionRequest
+import com.example.chatopenai.data.remote.model.GenerateImageRequest
 import com.example.chatopenai.domain.repository.OpenAiRepository
 import com.example.chatopenai.util.ApiKey
 import com.example.chatopenai.util.Resource
@@ -13,7 +13,7 @@ class OpenAiRepositoryImpl @Inject constructor(
 ) : OpenAiRepository {
 
 
-    override suspend fun completeText(completionRequest: CompletionRequest): Resource<Completion> {
+    override suspend fun completeText(completionRequest: CompletionRequest): Resource<List<String>> {
         val result = try {
             val response = api.complete(
                 ApiKey.API_KEY,
@@ -21,7 +21,7 @@ class OpenAiRepositoryImpl @Inject constructor(
                 completionRequest
             )
             if (response.isSuccessful && response.body() != null) {
-                response.body()!!.completions.first()
+                response.body()!!.convertResponseInStringList()
             } else {
                 return Resource.Error("An unknown error occured")
             }
@@ -29,5 +29,22 @@ class OpenAiRepositoryImpl @Inject constructor(
             return Resource.Error("An unknown error occured")
         }
         return Resource.Success(result)
+    }
+
+    override suspend fun generateImage(generateImageRequest: GenerateImageRequest): Resource<List<String>> {
+        val response = try {
+            val result = api.generateImage(
+                ApiKey.API_KEY,
+                generateImageRequest
+            )
+            if (result.isSuccessful && result.body() != null) {
+                result.body()!!.convertResponseInStringList()
+            } else {
+                return Resource.Error("An unknown error occured")
+            }
+        } catch (e: Exception) {
+            return Resource.Error("An unknown error occured")
+        }
+        return Resource.Success(response)
     }
 }
