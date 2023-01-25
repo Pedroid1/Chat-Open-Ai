@@ -8,7 +8,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_rv"
+        android:paddingTop="@dimen/spacing_5"
         android:layout_width="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         android:layout_height="0dp"
         android:paddingBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +47,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/prompt_edt"
                     style="@style/edit_text_custom"
+                    android:hint="@string/make_a_question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -51,6 +55,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:id="@+id/send_btn"
                 android:layout_marginEnd="@dimen/spacing_10"
                 android:src="@drawable/ic_send"
                 app:layout_constraintBottom_toBottomOf="@id/prompt_il"

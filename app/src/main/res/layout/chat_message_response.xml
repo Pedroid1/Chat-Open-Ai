@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/spacing_5">
+    android:background="@color/light_gray"
+    android:minHeight="65dp">
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/top_divider"
@@ -16,20 +17,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:paddingVertical="@dimen/spacing_10"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/spacing_10"
-        app:layout_constraintTop_toBottomOf="@id/top_divider"
+        android:paddingVertical="@dimen/spacing_10"
+        app:layout_constraintBottom_toTopOf="@id/bottom_divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_divider">
 
         <ImageView
             android:id="@+id/response_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_brain"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.example.chatopenai.presentation.components.CustomTextView
             android:id="@+id/response_txt"
@@ -52,7 +54,7 @@
         android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
