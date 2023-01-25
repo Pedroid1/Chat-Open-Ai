@@ -3,6 +3,9 @@ package com.example.chatopenai.di
 import com.example.chatopenai.data.remote.OpenAiApi
 import com.example.chatopenai.data.repository.OpenAiRepositoryImpl
 import com.example.chatopenai.domain.repository.OpenAiRepository
+import com.example.chatopenai.domain.use_case.ApiUseCases
+import com.example.chatopenai.domain.use_case.GenerateCompletionUseCase
+import com.example.chatopenai.domain.use_case.GenerateImageUseCase
 import com.example.chatopenai.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -31,5 +34,14 @@ object AppModule {
     fun provideChatRepository(api: OpenAiApi): OpenAiRepository {
         return OpenAiRepositoryImpl(api)
     }
+
+    @Provides
+    @Singleton
+    fun provideApiUseCases(
+        repo: OpenAiRepository
+    ) = ApiUseCases(
+        generateCompletionUseCase = GenerateCompletionUseCase(repo),
+        generateImageUseCase = GenerateImageUseCase(repo)
+    )
 
 }

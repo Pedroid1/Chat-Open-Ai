@@ -1,4 +1,4 @@
-package com.example.chatopenai.presentation.adapter
+package com.example.chatopenai.presentation.activity.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
