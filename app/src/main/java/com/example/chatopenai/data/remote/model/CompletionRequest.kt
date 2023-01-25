@@ -6,7 +6,7 @@ data class CompletionRequest(
     val model: String = "text-davinci-003",
     val prompt: String,
     @SerializedName("max_tokens")
-    val maxTokens: Int? = null,
+    val maxTokens: Int? = 200,
     val temperature: Float = 0f,
     @SerializedName("top_p")
     val topP: Int = 1,
