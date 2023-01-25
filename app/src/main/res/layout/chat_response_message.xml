@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_5">
+    android:paddingVertical="@dimen/spacing_5">
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/top_divider"
@@ -14,38 +14,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/response_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="@dimen/spacing_5"
-        android:layout_marginTop="@dimen/spacing_10"
-        android:src="@drawable/ic_brain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_divider" />
-
-    <com.example.chatopenai.presentation.components.CustomTextView
-        android:id="@+id/response_txt"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingVertical="@dimen/spacing_10"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_10"
-        android:layout_marginEnd="@dimen/spacing_5"
-        app:textType="body1"
-        app:textPriority="primary"
-        android:gravity="center|start"
-        android:minHeight="@dimen/spacing_30"
+        android:paddingHorizontal="@dimen/spacing_10"
+        app:layout_constraintTop_toBottomOf="@id/top_divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/response_icon"
-        app:layout_constraintTop_toTopOf="@id/response_icon"
-        tools:text="Nascer, crescer e morrer." />
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <ImageView
+            android:id="@+id/response_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_brain"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.example.chatopenai.presentation.components.CustomTextView
+            android:id="@+id/response_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_10"
+            android:layout_marginEnd="@dimen/spacing_5"
+            android:gravity="center|start"
+            android:minHeight="@dimen/spacing_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/response_icon"
+            app:layout_constraintTop_toTopOf="@id/response_icon"
+            app:textPriority="primary"
+            app:textType="body1"
+            tools:text="Nascer, crescer e morrer." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/bottom_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="@dimen/spacing_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/response_txt" />
-
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
