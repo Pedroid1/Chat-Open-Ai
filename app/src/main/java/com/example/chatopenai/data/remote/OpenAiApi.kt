@@ -12,7 +12,7 @@ import retrofit2.http.POST
 
 interface OpenAiApi {
 
-    @POST("engines/text-davinci-003/completions")
+    @POST("completions")
     @Headers("Content-Type: application/json")
     suspend fun complete(
         @Header("Authorization") apiKey: String,
