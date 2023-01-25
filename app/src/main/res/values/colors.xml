@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="white">#FFFFFF</color>
+    <color name="dark_gray">#8C8C8C</color>
+    <color name="transparency">#00FFFFFF</color>
+
 
     <color name="seed">#00edb7</color>
     <color name="md_theme_light_primary">#006C51</color>

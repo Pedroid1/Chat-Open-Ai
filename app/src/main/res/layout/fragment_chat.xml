@@ -6,19 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ChatFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_rv"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/prompt_cv"
+        android:elevation="4dp"
+        app:cardElevation="4dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_10"
+        android:layout_marginBottom="@dimen/spacing_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/prompt_il"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeActionLabel="Enviar"
-            android:imeOptions="actionSend" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent">
 
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/input_layout_outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/prompt_edt"
+                    style="@style/edit_text_custom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/spacing_10"
+                android:src="@drawable/ic_send"
+                app:layout_constraintBottom_toBottomOf="@id/prompt_il"
+                app:layout_constraintEnd_toEndOf="@id/prompt_il"
+                app:layout_constraintTop_toTopOf="@id/prompt_il" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

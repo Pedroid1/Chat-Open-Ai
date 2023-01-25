@@ -18,9 +18,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-
-        viewModel.url.observe(this) {
-            if (it != null) _binding.img.loadImage(it)
-        }
     }
 }
