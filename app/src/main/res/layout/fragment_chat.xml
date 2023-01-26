@@ -4,28 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatFragment">
+    tools:context=".presentation.fragment.ChatFragment">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/generate_text"
+            android:checkable="true"
+            android:checked="true"
+            android:text="Gerar texto" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/generate_image"
+            android:checkable="true"
+            android:text="Gerar imagem" />
+    </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_rv"
-        android:paddingTop="@dimen/spacing_5"
         android:layout_width="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/spacing_5"
         android:paddingBottom="60dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/chip_group" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/prompt_cv"
-        android:elevation="4dp"
-        app:cardElevation="4dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_10"
         android:layout_marginBottom="@dimen/spacing_5"
+        android:elevation="4dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -47,20 +72,32 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/prompt_edt"
                     style="@style/edit_text_custom"
-                    android:hint="@string/make_a_question"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:hint="@string/make_a_question" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
+                android:id="@+id/send_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/send_btn"
                 android:layout_marginEnd="@dimen/spacing_10"
                 android:src="@drawable/ic_send"
                 app:layout_constraintBottom_toBottomOf="@id/prompt_il"
                 app:layout_constraintEnd_toEndOf="@id/prompt_il"
                 app:layout_constraintTop_toTopOf="@id/prompt_il" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_anim"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/send_btn"
+                app:layout_constraintEnd_toEndOf="@id/send_btn"
+                app:layout_constraintTop_toTopOf="@id/send_btn"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/loading"
+                app:lottie_repeatCount="10000" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

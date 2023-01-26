@@ -5,10 +5,7 @@ import com.example.chatopenai.data.remote.model.CompletionResponse
 import com.example.chatopenai.data.remote.model.GenerateImageRequest
 import com.example.chatopenai.data.remote.model.GenerateImageResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface OpenAiApi {
 

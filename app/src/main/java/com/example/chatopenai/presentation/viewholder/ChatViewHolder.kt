@@ -16,7 +16,7 @@ sealed class ChatViewHolder(_binding: ViewBinding) : RecyclerView.ViewHolder(_bi
     ) : ChatViewHolder(_binding) {
 
         fun bindPromptMessage(prompt: ChatRecyclerViewItem.PromptItem) {
-            _binding.promptTxt.text = prompt.promptItem.message
+            _binding.promptTxt.text = prompt.promptItem.message.trim()
         }
     }
 
@@ -25,7 +25,7 @@ sealed class ChatViewHolder(_binding: ViewBinding) : RecyclerView.ViewHolder(_bi
     ) : ChatViewHolder(_binding) {
 
         fun bindResponseMessage(messageResponse: ChatRecyclerViewItem.MessageResponseItem) {
-            _binding.responseTxt.text = messageResponse.messageItem.message
+            _binding.responseTxt.text = messageResponse.messageItem.message.trim()
         }
     }
 
@@ -35,7 +35,16 @@ sealed class ChatViewHolder(_binding: ViewBinding) : RecyclerView.ViewHolder(_bi
 
         fun bindUrl(urlResponse: ChatRecyclerViewItem.UrlResponseItem) {
             _binding.img.toVisible()
-            _binding.img.loadImage(urlResponse.urlItem.url)
+            _binding.img.loadImage(urlResponse.urlItem.url.trim())
+        }
+    }
+
+    class ErrorResponse(
+        private val _binding: ChatMessageResponseBinding
+    ) : ChatViewHolder(_binding) {
+
+        fun bindError(errorResponse: ChatRecyclerViewItem.ErrorResponseItem) {
+            _binding.responseTxt.text = errorResponse.errorItem.uiText.asString(_binding.root.context)
         }
     }
 }

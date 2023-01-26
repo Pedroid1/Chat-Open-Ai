@@ -81,4 +81,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
+
+    //Lottie Animation
+    implementation 'com.airbnb.android:lottie:5.2.0'
 }

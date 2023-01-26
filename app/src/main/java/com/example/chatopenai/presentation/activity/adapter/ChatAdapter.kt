@@ -39,6 +39,14 @@ class ChatAdapter : ListAdapter<ChatRecyclerViewItem, ChatViewHolder>(DIFFUTILS)
                     )
                 )
             }
+            EnumChatRecyclerViewType.ERROR_RESPONSE_VIEW_TYPE -> {
+                return ChatViewHolder.ErrorResponse(
+                    ChatMessageResponseBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent, false
+                    )
+                )
+            }
         }
     }
 
@@ -46,6 +54,7 @@ class ChatAdapter : ListAdapter<ChatRecyclerViewItem, ChatViewHolder>(DIFFUTILS)
         is ChatViewHolder.Prompt -> holder.bindPromptMessage(getItem(position) as ChatRecyclerViewItem.PromptItem)
         is ChatViewHolder.MessageResponse -> holder.bindResponseMessage(getItem(position) as ChatRecyclerViewItem.MessageResponseItem)
         is ChatViewHolder.UrlResponse -> holder.bindUrl(getItem(position) as ChatRecyclerViewItem.UrlResponseItem)
+        is ChatViewHolder.ErrorResponse -> holder.bindError(getItem(position) as ChatRecyclerViewItem.ErrorResponseItem)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -65,6 +74,9 @@ class ChatAdapter : ListAdapter<ChatRecyclerViewItem, ChatViewHolder>(DIFFUTILS)
                     oldItem is ChatRecyclerViewItem.MessageResponseItem && newItem is ChatRecyclerViewItem.MessageResponseItem -> {
                         oldItem.messageItem == newItem.messageItem
                     }
+                    oldItem is ChatRecyclerViewItem.UrlResponseItem && newItem is ChatRecyclerViewItem.UrlResponseItem -> {
+                        oldItem.urlItem == newItem.urlItem
+                    }
                     else -> false
                 }
             }
@@ -79,6 +91,9 @@ class ChatAdapter : ListAdapter<ChatRecyclerViewItem, ChatViewHolder>(DIFFUTILS)
                     }
                     oldItem is ChatRecyclerViewItem.MessageResponseItem && newItem is ChatRecyclerViewItem.MessageResponseItem -> {
                         oldItem.messageItem == newItem.messageItem
+                    }
+                    oldItem is ChatRecyclerViewItem.UrlResponseItem && newItem is ChatRecyclerViewItem.UrlResponseItem -> {
+                        oldItem.urlItem == newItem.urlItem
                     }
                     else -> false
                 }

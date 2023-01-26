@@ -12,4 +12,6 @@ sealed class ChatRecyclerViewItem(val type: EnumChatRecyclerViewType) {
     class MessageResponseItem(val messageItem: MessageResponse) : ChatRecyclerViewItem(EnumChatRecyclerViewType.MESSAGE_RESPONSE_VIEW_TYPE)
 
     class UrlResponseItem(val urlItem: UrlResponse) : ChatRecyclerViewItem(EnumChatRecyclerViewType.URL_RESPONSE_VIEW_TYPE)
+
+    class ErrorResponseItem(val errorItem: Error) : ChatRecyclerViewItem(EnumChatRecyclerViewType.ERROR_RESPONSE_VIEW_TYPE)
 }

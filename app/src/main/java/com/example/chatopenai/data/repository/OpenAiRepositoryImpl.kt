@@ -29,7 +29,7 @@ class OpenAiRepositoryImpl @Inject constructor(
                 return Resource.Error("An unknown error occured")
             }
         } catch (e: Exception) {
-            return Resource.Error("An unknown error occured")
+            return Resource.Error(e.message ?: "An unknown error occured")
         }
         return Resource.Success(result)
     }
@@ -46,7 +46,7 @@ class OpenAiRepositoryImpl @Inject constructor(
                 return Resource.Error("An unknown error occured")
             }
         } catch (e: Exception) {
-            return Resource.Error("An unknown error occured")
+            return Resource.Error(e.message ?: "An unknown error occured")
         }
         return Resource.Success(response)
     }
