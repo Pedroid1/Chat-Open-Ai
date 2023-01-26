@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chatopenai.R
 import com.example.chatopenai.common.*
 import com.example.chatopenai.databinding.FragmentChatBinding
-import com.example.chatopenai.presentation.activity.adapter.ChatAdapter
+import com.example.chatopenai.presentation.adapter.ChatAdapter
 import com.example.chatopenai.presentation.enuns.RequestType
 import com.example.chatopenai.presentation.state.ChatViewState
 import com.example.chatopenai.presentation.viewmodel.ChatViewModel
@@ -20,7 +20,6 @@ class ChatFragment : Fragment() {
 
     private lateinit var _binding: FragmentChatBinding
     private var chatAdapter = ChatAdapter()
-    private val mainViewModel: MainViewModel by lazy { ViewModelProvider(requireActivity())[MainViewModel::class.java] }
     private val viewModel: ChatViewModel by lazy { ViewModelProvider(requireActivity())[ChatViewModel::class.java] }
 
     override fun onCreateView(
@@ -48,8 +47,8 @@ class ChatFragment : Fragment() {
     }
 
     private fun observer() {
-        viewModel.chatViewState.observe(viewLifecycleOwner) {
-            handleChatViewState(it)
+        viewLifecycleOwner.apply {
+            observe(viewModel.chatViewState, ::handleChatViewState)
         }
     }
 

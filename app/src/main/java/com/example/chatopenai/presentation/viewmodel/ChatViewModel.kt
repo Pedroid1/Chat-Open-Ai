@@ -28,9 +28,8 @@ class ChatViewModel @Inject constructor(
     private val _chatViewState = MutableLiveData(ChatViewState())
     val chatViewState get() = _chatViewState
 
-    private fun addItemChatList(item: ChatRecyclerViewItem) {
+    private fun addChatListItem(item: ChatRecyclerViewItem) {
         chatMessageList.add(item)
-
         if (item is ChatRecyclerViewItem.PromptItem) {
             _chatViewState.postValue(
                 _chatViewState.value?.copy(
@@ -46,18 +45,17 @@ class ChatViewModel @Inject constructor(
                 )
             )
         }
-
     }
 
     fun makeRequest(text: String) {
-        when(requestType) {
+        when (requestType) {
             RequestType.GENERATE_TEXT -> makeCompletionRequest(text)
             RequestType.GENERATE_IMAGE -> makeGenerateImageRequest(text)
         }
     }
 
     private fun makeCompletionRequest(text: String) {
-        addItemChatList(ChatRecyclerViewItem.PromptItem(promptItem = Prompt(text)))
+        addChatListItem(ChatRecyclerViewItem.PromptItem(promptItem = Prompt(text)))
 
         viewModelScope.launch(Dispatchers.IO) {
             val completionRequest = CompletionRequest(prompt = text)
@@ -65,14 +63,14 @@ class ChatViewModel @Inject constructor(
                 is Resource.Success -> {
                     launch(Dispatchers.Main) {
                         response.data?.firstOrNull()?.apply {
-                            addItemChatList(ChatRecyclerViewItem.MessageResponseItem(this))
+                            addChatListItem(ChatRecyclerViewItem.MessageResponseItem(this))
                         }
                     }
                 }
                 is Resource.Error -> {
                     launch(Dispatchers.Main) {
                         response.message?.apply {
-                            addItemChatList(
+                            addChatListItem(
                                 ChatRecyclerViewItem.ErrorResponseItem(
                                     Error(UiText.DynamicString(response.message))
                                 )
@@ -85,7 +83,7 @@ class ChatViewModel @Inject constructor(
     }
 
     private fun makeGenerateImageRequest(text: String) {
-        addItemChatList(ChatRecyclerViewItem.PromptItem(promptItem = Prompt(text)))
+        addChatListItem(ChatRecyclerViewItem.PromptItem(promptItem = Prompt(text)))
 
         viewModelScope.launch(Dispatchers.IO) {
             val generateImageRequest = GenerateImageRequest(prompt = text)
@@ -93,14 +91,14 @@ class ChatViewModel @Inject constructor(
                 is Resource.Success -> {
                     launch(Dispatchers.Main) {
                         response.data?.firstOrNull()?.apply {
-                            addItemChatList(ChatRecyclerViewItem.UrlResponseItem(this))
+                            addChatListItem(ChatRecyclerViewItem.UrlResponseItem(this))
                         }
                     }
                 }
                 is Resource.Error -> {
                     launch(Dispatchers.Main) {
                         response.message?.apply {
-                            addItemChatList(
+                            addChatListItem(
                                 ChatRecyclerViewItem.ErrorResponseItem(
                                     Error(UiText.DynamicString(response.message))
                                 )

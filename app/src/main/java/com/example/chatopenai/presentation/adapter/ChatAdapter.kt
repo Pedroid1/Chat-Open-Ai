@@ -1,4 +1,4 @@
-package com.example.chatopenai.presentation.activity.adapter
+package com.example.chatopenai.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -49,18 +49,15 @@ class ChatAdapter : ListAdapter<ChatRecyclerViewItem, ChatViewHolder>(DIFFUTILS)
             }
         }
     }
-
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) = when (holder) {
         is ChatViewHolder.Prompt -> holder.bindPromptMessage(getItem(position) as ChatRecyclerViewItem.PromptItem)
         is ChatViewHolder.MessageResponse -> holder.bindResponseMessage(getItem(position) as ChatRecyclerViewItem.MessageResponseItem)
         is ChatViewHolder.UrlResponse -> holder.bindUrl(getItem(position) as ChatRecyclerViewItem.UrlResponseItem)
         is ChatViewHolder.ErrorResponse -> holder.bindError(getItem(position) as ChatRecyclerViewItem.ErrorResponseItem)
     }
-
     override fun getItemViewType(position: Int): Int {
         return getItem(position).type.ordinal
     }
-
     companion object {
         val DIFFUTILS = object : DiffUtil.ItemCallback<ChatRecyclerViewItem>() {
             override fun areItemsTheSame(
