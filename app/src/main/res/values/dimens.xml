@@ -2,7 +2,7 @@
 <resources>
 
     <!-- All Screens -->
-    <dimen name="layout_margin">20dp</dimen>
+    <dimen name="layout_margin">15dp</dimen>
 
     <!-- Some dimens -->
     <dimen name="spacing_2">2dp</dimen>
