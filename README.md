@@ -49,14 +49,13 @@ Faça o download da <a href="apk/app-debug.apk?raw=true">APK diretamente</a>. Vo
 ## Arquitetura
 **Chat OpenAi** utiliza a arquitetura MVVM com Clean Architecture, que segue as [recomendações oficiais do Google](https://developer.android.com/topic/architecture).
 </br></br>
+
 <p float="left" align="center">
- <img src=screenshots/arch.png" width="60%"/>
+ <img src="screenshots/arch2.png" width="80%"/>
 </p>
-<br>
 
 ## API de terceiros
-OpenAi Api: https://openai.com/api/
-Api capaz de gerar e editar imagens, textos e respostas.
+OpenAi Api: https://openai.com/api/ - Api capaz de gerar e editar imagens, textos e respostas.
 
 ## Features
 <p float="left" align="center">
