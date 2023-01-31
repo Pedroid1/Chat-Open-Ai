@@ -6,7 +6,7 @@
   <br>
   <a href="https://wa.me/+5574999637391"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
   <a href="https://www.linkedin.com/in/pedro-henrique-de-souza-araujo/"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="pedro.steam2016@hotmail.com"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+  <a href="mailto:pedro.steam2016@hotmail.com"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
 </p>
 
 <p align="center">  
@@ -19,6 +19,9 @@ Aplicativo que permite o usuário se comunicar com uma Inteligência Artificial(
 <p float="left" align="center">
  <img alt="gif" width="30%" src="screenshots/Gif.gif"/>
 </p>
+
+## Clonar repositório
+Ao clonar o repositório caso deseje executar projeto, será necessário gerar suas chaves da OpenAi API, salvar em um arquivo e passar para função que se conecta com a API. Caso queira contribuir com o projeto, lembre-se de adicionar seu arquivo de chaves da API no .gitignore. 
 
 ## Download
 Faça o download da <a href="apk/app-debug.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
