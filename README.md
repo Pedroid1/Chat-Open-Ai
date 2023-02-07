@@ -23,9 +23,6 @@ Aplicativo que permite o usuário se comunicar com uma Inteligência Artificial(
 ## Clonar repositório
 Ao clonar o repositório caso deseje executar projeto, será necessário gerar suas chaves da OpenAi API, salvar em um arquivo e passar para função que se conecta com a API. Caso queira contribuir com o projeto, lembre-se de adicionar seu arquivo de chaves da API no .gitignore. 
 
-## Download
-Faça o download da <a href="apk/app-debug.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
-
 ## Tecnologias usadas e bibliotecas de código aberto
 
 - Minimum SDK level 21
