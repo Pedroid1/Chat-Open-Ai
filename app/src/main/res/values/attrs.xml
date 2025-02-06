@@ -9,7 +9,6 @@
             <enum name="subtitle2" value="3" />
             <enum name="body1" value="4" />
             <enum name="body2" value="5" />
-            <enum name="caption" value="6" />
         </attr>
 
         <attr name="textPriority" format="enum" >
