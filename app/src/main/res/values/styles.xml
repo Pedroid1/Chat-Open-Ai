@@ -6,7 +6,7 @@
     </style>
 
     <style name="edit_text_custom" parent="Base.Widget.MaterialComponents.TextInputEditText">
-        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">13sp</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>

@@ -8,7 +8,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import com.example.chatopenai.R
 import com.google.android.material.R.attr.colorOnBackground
-import com.google.android.material.R.attr.colorOnSurfaceVariant
 import com.google.android.material.color.MaterialColors
 
 class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
@@ -32,7 +31,7 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
                     )
                 )
             )
-        }
+        }.recycle()
         this.letterSpacing = 0.05f
     }
 
@@ -54,39 +53,34 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
     private fun setTextType(type: EnumTextType) {
         when (type) {
             EnumTextType.TITLE1 -> {
-                val font = ResourcesCompat.getFont(this.context, R.font.poppins_semibold)
+                val font = ResourcesCompat.getFont(this.context, R.font.montserrat_semibold)
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
             }
             EnumTextType.TITLE2 -> {
-                val font = ResourcesCompat.getFont(this.context, R.font.poppins_semibold)
+                val font = ResourcesCompat.getFont(this.context, R.font.montserrat_semibold)
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
             }
             EnumTextType.SUBTITLE1 -> {
-                val font = ResourcesCompat.getFont(context, R.font.poppins_medium);
+                val font = ResourcesCompat.getFont(context, R.font.montserrat_medium);
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
             }
             EnumTextType.SUBTITLE2 -> {
-                val font = ResourcesCompat.getFont(context, R.font.poppins_medium)
+                val font = ResourcesCompat.getFont(context, R.font.montserrat_medium)
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f)
             }
             EnumTextType.BODY1 -> {
-                val font = ResourcesCompat.getFont(context, R.font.poppins_regular)
+                val font = ResourcesCompat.getFont(context, R.font.montserrat_regular)
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             }
             EnumTextType.BODY2 -> {
-                val font = ResourcesCompat.getFont(context, R.font.poppins_regular)
+                val font = ResourcesCompat.getFont(context, R.font.montserrat_regular)
                 this.typeface = font
                 this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-            }
-            EnumTextType.CAPTION -> {
-                val font = ResourcesCompat.getFont(context, R.font.poppins_semibold)
-                this.typeface = font
-                this.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
             }
         }
     }
@@ -97,8 +91,7 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
         SUBTITLE1,
         SUBTITLE2,
         BODY1,
-        BODY2,
-        CAPTION;
+        BODY2;
 
         companion object {
             @JvmStatic
